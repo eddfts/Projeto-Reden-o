@@ -66,33 +66,33 @@
         <strong>Is.52:7</strong></h2>
       </div>
     </header>
-<?php include_once 'models/eventoSql.php'; 
- 
-	$sql = mysqli_query($con,$query) or die("Erro");
-	$linhas = mysqli_num_rows($sql);
-	
-if($linhas == '')
-	{
-		?>
-           <div class="msg2 padding20">Usuário não encontrado ou usuário e senha inválidos.</div>
-        <?PHP
-	}
-else
-	{
-		while($dados=mysqli_fetch_assoc($sql))
-			{
-				$id_evento = $dados['id_evento'];
+	<?php include_once 'models/eventoSql.php'; 
+ 		
+		  $sql = mysqli_query($con,$query) or die("Erro");
+	      $linhas = mysqli_num_rows($sql);
+			
+		  if($linhas == '')
+	      {
+			
+           	 	print "<div class='msg2 padding20'>Dados não encontrado.</div>";
+            
+		  }
+          else
+	         {
+				while($dados=mysqli_fetch_assoc($sql))
+			    {
+				  $id_evento = $dados['id_evento'];
 				
 				
-?>    
-    <!-- Portfolio Grid Section -->
+   ?>    
+    				<!-- Portfolio Grid Section -->
      <section class="portfolio" id="portfolio">
       <div class="container">
          <!--------------------------------------------Titulo da Atividade----------------------------->
-        <h3 class="text-center text-uppercase text-secondary mb-0"><?php print $titulo_evento = $dados['tema_evento']; ?></h3>
-        <hr class="alert-dark mb-5">
-        <!--texto informaçoes do evento-->
-        <div class="jumbotron">
+         <h3 class="text-center text-uppercase text-secondary mb-0"><?php print $titulo_evento = $dados['tema_evento']; ?></h3>
+         <hr class="alert-dark mb-5">
+        	<!--texto informaçoes do evento-->
+        	<div class="jumbotron">
      		<div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
             	<strong>Data:</strong>
 					<?php print  "<span style='font-size:18px'>".$dados['Data']."</span>";?>
@@ -121,31 +121,24 @@ else
 					$linhas = mysqli_num_rows($sql);
 					if($linhas == '')
 					{
-				    
-					
-					?>
-           				<div class="msg2 padding20">Usuário não encontrado ou usuário e senha inválidos.</div>
-       			   <?PHP
-	               }
+				   	   print "<div class='msg2 padding20'>Dados não encontrado.</div>";
+       			   
+	                }
 					else
 						{
 							while($dados=mysqli_fetch_assoc($sql))
 							{
 						
-		     ?>
-			 		
-				<div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
-            	<strong><?php print $dados['nome_atividade']; ?>: </strong><?php print $dados['ministro']; ?>
-                <i>(<?php print $dados['nome_congregacao']; ?>)</i>
-                
-              <?php
-				  }
-			    }
-			  ?>   
-                  
-			  				
-			   </div>	              
-         	</div>
+		     				?>
+			 				<div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
+            				<strong><?php print $dados['nome_atividade']; ?>: </strong><?php print $dados['ministro']; ?>
+                			<i>(<?php print $dados['nome_congregacao']; ?>)</i>
+                  			<?php
+				          }
+			            }
+			  		?>
+                </div>	              
+        </div>
             
           </div><!--Jumbotron--> 
             <!--<a class="portfolio-item btn-primary mx-auto" href="#portfolio-modal-2">
@@ -272,8 +265,8 @@ else
               </div>-->
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Telefone</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Telefone(WhatsApp)" required data-validation-required-message="Por favor digite o número do telefone.">
+                  <label>Telefone (WhatsApp)</label>
+                  <input class="form-control" id="phone" type="tel" placeholder="Telefone" required data-validation-required-message="Por favor digite o número do telefone." maxlength="14">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>

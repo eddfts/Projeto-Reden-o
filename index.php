@@ -228,14 +228,11 @@ else
         <hr class="alert-dark mb-5">
         <div class="row">
           <div class="col-lg-4 ml-auto">
-            <p class="lead">Missão Promover inclusão social por meio de ações socioeducativas, mediação de acesso e integração ao mundo do trabalho.</p>
+            <p class="lead">O Projeto Redenção foi concebido por meio de um chamado; "Sinalizar o Reino de Deus".</p>
           </div>
           <div class="col-lg-4 mr-auto">
-            <p class="lead">Ser uma instituição do terceiro setor reconhecida pela liderança, excelência, inovação e impacto social, por meio de ações de proteção e inclusão social.</p>
-            <p class="lead">Valores
-Ética, Excelência, Transparência e Responsabilidade Social.</p>
-          
-           <div class="col-lg-4 mr-auto">           
+            <p class="lead"> O Projeto visa sinalizar o Reino de Deus, por meio da proclamação da Palavra e por meio de obras que procuram demonstrar a fraternidade.</p>
+           <!--<div class="col-lg-4 mr-auto">           
            <p class="lead">Valores
 Ética, Excelência, Transparência e Responsabilidade Social.</p>
           
@@ -252,7 +249,7 @@ else
     <!-- Contact Section -->
     <section id="contact">
       <div class="container">
-        <h2 class="text-center text-uppercase text-secondary mb-0">Contate-nos</h2>
+        <h4 class="text-center text-uppercase text-secondary mb-0">Contate-nos</h4>
         <hr class="alert-dark mb-5">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -262,28 +259,28 @@ else
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Nome</label>
-                  <input class="form-control" id="name" type="text" placeholder="Name" required data-validation-required-message="Please enter your name.">
+                  <input class="form-control" id="name" type="text" placeholder="Nome" required data-validation-required-message="Por favor digite seu nome.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
-              <div class="control-group">
+              <!--<div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>E-mail</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" required data-validation-required-message="Please enter your email address.">
+                  <input class="form-control" id="email" type="email" placeholder="E-mail" required data-validation-required-message="Please enter your email address.">
                   <p class="help-block text-danger"></p>
                 </div>
-              </div>
+              </div>-->
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Telefone</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required data-validation-required-message="Please enter your phone number.">
+                  <input class="form-control" id="phone" type="tel" placeholder="Telefone(WhatsApp)" required data-validation-required-message="Por favor digite o número do telefone.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Mensagem</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required data-validation-required-message="Please enter a message."></textarea>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Mensagem"></textarea>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>

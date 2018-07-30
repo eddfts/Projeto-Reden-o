@@ -6,12 +6,12 @@ include_once 'conexao.php';
 $query = " SELECT M.nome_ministro AS ministro ".
                 " ,A.tema_atividade As tema_atividade".
                 " ,NA.nome_nome_atividade AS nome_atividade ".
-                " ,DATE_FORMAT(A.data_atividade, '%d/%m/%Y') AS DataAtividade ".
+                " ,DATE_FORMAT(A.data_atividade, '%d/%m/%Y') AS data_atividade ".
                 " ,A.status_atividade ".
           " FROM tbl_atividade AS A ".
             " INNER  JOIN tbl_ministro AS M ON M.id_ministro = A.fk_id_ministro ".
             " INNER JOIN tbl_nome_atividade As NA ON NA.id_nome_atividade = A.fk_id_nome_atividade ".
           " WHERE A.fk_id_evento = {$id_evento}".
           " AND M.dia_ministro IS NULL".
-          " ORDER  BY A.status_atividade ";
+          " ORDER  BY A.status_atividade, DataAtividade ";
 ?>

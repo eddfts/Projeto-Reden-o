@@ -88,7 +88,7 @@
          <h3 class="text-center text-uppercase text-secondary mb-0"><?php print $titulo_evento = $dados['tema_evento']; ?></h3>
          <hr class="alert-dark mb-5">
          <!--Fim Titulo da Atividade-->
-        
+         <div class="row"> 
          <!--texto informaçoes do evento-->
          <div class="col-md-6 col-lg-4">
              <div class="jumbotron">
@@ -109,7 +109,7 @@
                                }
                          ?>
                  </strong>
-              </div>             
+                </div>             
                  <!--Seleciona a atividade do ministrante do dia-->
                  <?php              
                         include_once 'models/atividadeMinistroSql.php';
@@ -194,7 +194,7 @@
                   <?php print $dados['ministro']; ?></td>
                   <?php print $dados['nome_atividade']; ?></td>
                   <?php print $dados['tema_atividade']; ?></td>
-                  <?php print $dados['DataAtividade']; ?></td>
+                  <?php print $dados['data_atividade']; ?></td>
                   <?php if($dados['status_atividade'] == '1'){
                            print "<del>Concluído</del>";
                         }else if ($dados['status_atividade'] == '0') { 
@@ -240,6 +240,7 @@
   <?php }
        }
   ?>  
+  </div>
     </section>
      
  

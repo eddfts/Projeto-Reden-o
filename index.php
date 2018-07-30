@@ -70,111 +70,141 @@
  		
 		  $sql = mysqli_query($con,$query) or die("Erro");
 	      $linhas = mysqli_num_rows($sql);
-			
 		  if($linhas == '')
 	      {
-			
-           	 	print "<div class='msg2 padding20'>Dados não encontrado.</div>";
-            
-		  }
+			print "<div class='msg2 padding20'>Dados não encontrado.</div>";
+          }
           else
 	         {
 				while($dados=mysqli_fetch_assoc($sql))
 			    {
 				  $id_evento = $dados['id_evento'];
 				
-				
-   ?>    
-    				<!-- Portfolio Grid Section -->
+		   ?>    
+    <!-- Portfolio Grid Section -->
      <section class="portfolio" id="portfolio">
       <div class="container">
-         <!--------------------------------------------Titulo da Atividade----------------------------->
+         <!--Titulo da Atividade-->
          <h3 class="text-center text-uppercase text-secondary mb-0"><?php print $titulo_evento = $dados['tema_evento']; ?></h3>
          <hr class="alert-dark mb-5">
-        	<!--texto informaçoes do evento-->
-        	<div class="jumbotron">
-     		<div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
-            	<strong>Data:</strong>
-					<?php print  "<span style='font-size:18px'>".$dados['Data']."</span>";?>
-            </div>
-      		<div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
-            	<strong>Horário:</strong>
-					<?php print "<span style='font-size:18px'>".$dados['hora_evento']."</span>"; ?>
-            </div>
-          	<div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
-            	<strong>Local:</strong>
-					<?php print "<span style='font-size:18px'>".$dados['nome_local']."</span>"; ?>
-            </div>
-            
-            <div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
-            	<strong>
-					<?php if($dados['status_evento'] == '1'){
-			  				print "<del>Concluído</del>";
-						  } 
-		 				  else if ($dados['status_evento'] == '0') { 
-		           			print "Em Andamento"; 
-						  }?></strong>
-             <!--Seleciona a atividade do ministrante do dia-->
-			 <?php              
-             		include_once 'models/atividadeMinistroSql.php';
-					$sql = mysqli_query($con,$query_ministro) or die("Erro");
-					$linhas = mysqli_num_rows($sql);
-					if($linhas == '')
-					{
-				   	   print "<div class='msg2 padding20'>Dados não encontrado.</div>";
-       			   
-	                }
-					else
-						{
-							while($dados=mysqli_fetch_assoc($sql))
-							{
-						
-		     				?>
-			 				<div class="form-text text-center" style="font-family:'Open Sans',Montserrat;font-size:20px">
-            				<strong><?php print $dados['nome_atividade']; ?>: </strong><?php print $dados['ministro']; ?>
-                			<i>(<?php print $dados['nome_congregacao']; ?>)</i>
-                  			<?php
-				          }
-			            }
-			  		?>
-                </div>	              
-        </div>
-            
-          </div><!--Jumbotron--> 
-            <!--<a class="portfolio-item btn-primary mx-auto" href="#portfolio-modal-2">
-                <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                   <i class="fa fa-search-plus fa-3x"></i>
-                 <!--<i class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"></i>
+         <!--Fim Titulo da Atividade-->
+        
+         <!--texto informaçoes do evento-->
+         <div class="col-md-6 col-lg-4">
+             <div class="jumbotron">
+                <div class="form-text text-justify">
+                    <strong>Data:</strong>
+                        <?php print $dados['Data'];?><span></span> <strong>Horário:</strong> <?php print $dados['hora_evento']; ?>
                 </div>
-              </div>
-                
-                
-             </a>      
-           <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
+                <div class="form-text text-justify">
+                    <strong>Local:</strong> <?php print $dados['nome_local']; ?>
                 </div>
+                <div class="form-text text-justify">
+                <strong> <?php if($dados['status_evento'] == '1'){
+                                    print "<del>Concluído</del>";
+                               } 
+                               else if ($dados['status_evento'] == '0') 
+                               { 
+                                         print "Em Andamento"; 
+                               }
+                         ?>
+                 </strong>
+              </div>             
+                 <!--Seleciona a atividade do ministrante do dia-->
+                 <?php              
+                        include_once 'models/atividadeMinistroSql.php';
+                        $sql = mysqli_query($con,$query_ministro) or die("Erro");
+                        $linhas = mysqli_num_rows($sql);
+                        if($linhas == '')
+                        {
+                           print "<div class='msg2 padding20'>Dados não encontrado.</div>";
+                       
+                        }
+                        else
+                            {
+                                while($dados=mysqli_fetch_assoc($sql))
+                                {
+                            
+                                ?><div class="form-text text-center">
+                                <strong><?php print $dados['nome_atividade']; ?> </strong>
+                                </div>
+                                <div class="form-text text-center">
+                                    <?php print $dados['ministro']; ?>
+                                        <i>(<?php print $dados['nome_congregacao']; ?>)</i>
+                                </div>
+                                <div class="form-text text-center">       
+                                        <strong>Tema:</strong><?php print $dados['tema_atividade']; ?>
+                             	</div>
+                                <?php
+                              }
+                            }
+                        ?>
+                </div><!--Jumbotron-->
+                </div> 
+             <?php
+                }
+            }
+        ?> <!--finaliza informaçoes do evento-->  
+        <?php
+                include_once 'models/atividadeSql.php'; 
+                $sql = mysqli_query($con,$query) or die("Erro");
+                $linhas = mysqli_num_rows($sql);
+                if($linhas == '')
+                {
+                    print "<div class='msg2 padding20'>Dados não encontrado.</div>";                        
+                }
+                else{
+                     while($dados=mysqli_fetch_assoc($sql))
+                     {
+        ?>				 
+                            
+                <!--<a class="portfolio-item btn-primary mx-auto" href="#portfolio-modal-2">
+                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                       <i class="fa fa-search-plus fa-3x"></i>
+                     <!--<i class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"></i>
+                    </div>
+                  </div>
+                    
+                    
+                 </a>      
+               <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+                  <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                      <i class="fa fa-search-plus fa-3x"></i>
+                    </div>
+                  </div>
+                  
+                  <img class="img-fluid" src="img/portfolio/prjRedencao.png" alt="">
+                </a>
               </div>
               
-              <img class="img-fluid" src="img/portfolio/prjRedencao.png" alt="">
-            </a>
-          </div>
-          
-          </div>-->
-
-         <!--<div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
+              </div>-->
+              
+    
+             <div class="col-md-6 col-lg-4">
+              <div class="jumbotron">
+                <div class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+                  <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                      <i class="fa fa-search-plus fa-3x"></i>
+                    </div>
+                  </div>
+                
+                  <?php print $dados['ministro']; ?></td>
+                  <?php print $dados['nome_atividade']; ?></td>
+                  <?php print $dados['tema_atividade']; ?></td>
+                  <?php print $dados['DataAtividade']; ?></td>
+                  <?php if($dados['status_atividade'] == '1'){
+                           print "<del>Concluído</del>";
+                        }else if ($dados['status_atividade'] == '0') { 
+                                  print "<mark>A Fazer</mark>"; 
+                              } ?>
               </div>
-              <img class="img-fluid" src="img/portfolio/circus.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
+            </div>
+         
+         </div> 
+          <!--<div class="col-md-6 col-lg-4">
             <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
               <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
                 <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
@@ -183,8 +213,9 @@
               </div>
               <img class="img-fluid" src="img/portfolio/game.png" alt="">
             </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
+          </div>-->
+          
+          <!--<div class="col-md-6 col-lg-4">
             <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
               <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
                 <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
@@ -206,12 +237,12 @@
           </div>
         </div>
       </div>-->
+  <?php }
+       }
+  ?>  
     </section>
      
- <?php
-			}
-	}
-?> 
+ 
  </div>  
 
     <!-- About Section -->
@@ -224,7 +255,7 @@
             <p class="lead">O Projeto Redenção foi concebido por meio de um chamado; "Sinalizar o Reino de Deus".</p>
           </div>
           <div class="col-lg-4 mr-auto">
-            <p class="lead"> O Projeto visa sinalizar o Reino de Deus, por meio da proclamação da Palavra e por meio de obras que procuram demonstrar a fraternidade.</p>
+            <p class="lead">O Projeto visa sinalizar o Reino de Deus, por meio da proclamação da Palavra e por meio de obras que procuram demonstrar a fraternidade.</p>
            <!--<div class="col-lg-4 mr-auto">           
            <p class="lead">Valores
 Ética, Excelência, Transparência e Responsabilidade Social.</p>
@@ -293,12 +324,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Location</h4>
-            <p class="lead mb-0">2215 John Daniel Drive
-              <br>Clark, MO 65243</p>
+            <h4 class="text-uppercase mb-4">Localização</h4>
+            <p class="lead mb-0"><!--2215 John Daniel Drive-->
+              <br><!--Clark, MO 65243--></p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Around the Web</h4>
+            <h4 class="text-uppercase mb-4">Rede Sociais</h4>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
@@ -306,8 +337,8 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                  <i class="fa fa-fw fa-google-plus"></i>
+              <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.youtube.com/channel/UCwbYC_DRqrAcuwWHlleQ_Ig">
+                  <i class="fa fa-fw fa-youtube"></i>
                 </a>
               </li>
               <li class="list-inline-item">
@@ -315,22 +346,22 @@
                   <i class="fa fa-fw fa-twitter"></i>
                 </a>
               </li>
-              <li class="list-inline-item">
+              <!--<li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
                   <i class="fa fa-fw fa-linkedin"></i>
                 </a>
-              </li>
-              <li class="list-inline-item">
+              </li>-->
+              <!--<li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
                   <i class="fa fa-fw fa-dribbble"></i>
                 </a>
-              </li>
+              </li>-->
             </ul>
           </div>
           <div class="col-md-4">
-            <h4 class="text-uppercase mb-4">About Freelancer</h4>
-            <p class="lead mb-0">Freelance is a free to use, open source Bootstrap theme created by
-              <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+            <h4 class="text-uppercase mb-4">Sobre</h4>
+            <p class="lead mb-0">Visando sinalizar o Reino de Deus, através da proclamação da Palavra e por meio de obras que procuram demonstrar a fraternidade.
+              </p>
           </div>
         </div>
       </div>
@@ -386,21 +417,20 @@
               <hr class="star-dark mb-5">
               <img class="img-fluid mb-5" src="img/portfolio/prjRedencao.png" alt="">
               <p class="mb-5"><div class="container">
-				 <?php
-                 include_once 'models/atividadeSql.php'; 
-                     $sql = mysqli_query($con,$query) or die("Erro");
-                $linhas = mysqli_num_rows($sql);
-                if($linhas == '')
-                    {
-                        ?>
-                        <div class="msg2 padding20">Usuário não encontrado ou usuário e senha inválidos.</div>
-                        <?PHP
-                    }
-                else
-                    {
+				 <?php 
+				 		include_once 'models/atividadeSql.php'; 
+                     	$sql = mysqli_query($con,$query) or die("Erro");
+                		$linhas = mysqli_num_rows($sql);
+                		
+						if($linhas == '')
+                    	{
+                       		print "<div class='msg2 padding20'>Dados não encontrado.</div>";                        
+                    	}
+                		else
+                    		{
                         
-                ?>
-                   <table class="table table-bordered" style="font-family:'Open Sans',Montserrat;font-size:16px">
+                	?>
+                   		<table class="table table-bordered" style="font-family:'Open Sans',Montserrat;font-size:16px">
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">Ministro</th>

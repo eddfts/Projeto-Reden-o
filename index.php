@@ -346,11 +346,11 @@
                   <i class="fa fa-fw fa-twitter"></i>
                 </a>
               </li>
-              <!--<li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                  <i class="fa fa-fw fa-linkedin"></i>
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://api.whatsapp.com/send?phone=5531989105253&text=Oi! Estou entrando em contato pelo chat Whatsapp ao Projeto Redenção. Poderia me ajudar?">
+                  <i class="fa fa-fw fa-whatsapp"></i>
                 </a>
-              </li>-->
+              </li>
               <!--<li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
                   <i class="fa fa-fw fa-dribbble"></i>

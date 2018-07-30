@@ -12,5 +12,6 @@ $query = " SELECT M.nome_ministro AS ministro ".
             " INNER  JOIN tbl_ministro AS M ON M.id_ministro = A.fk_id_ministro ".
             " INNER JOIN tbl_nome_atividade As NA ON NA.id_nome_atividade = A.fk_id_nome_atividade ".
           " WHERE A.fk_id_evento = {$id_evento}".
-          " AND M.dia_ministro IS NULL";
+          " AND M.dia_ministro IS NULL".
+          " ORDER  BY A.status_atividade ";
 ?>

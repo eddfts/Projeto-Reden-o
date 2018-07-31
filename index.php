@@ -92,7 +92,7 @@
          <!--texto informaçoes do evento-->
          <div class="col-md-6 col-lg-4">
              <div class="jumbotron">
-                <div class="form-text text-justify">
+                <!--<div class="form-text text-justify">
                     <strong>Data:</strong>
                         <?php print $dados['Data'];?><span></span> <strong>Horário:</strong> <?php print $dados['hora_evento']; ?>
                 </div>
@@ -190,19 +190,36 @@
                       <i class="fa fa-search-plus fa-3x"></i>
                     </div>
                   </div>
-                
-                  <?php print $dados['ministro']; ?></td>
-                  <?php print $dados['nome_atividade']; ?></td>
-                  <?php print $dados['tema_atividade']; ?></td>
-                  <?php print $dados['data_atividade']; ?></td>
-                  <?php if($dados['status_atividade'] == '1'){
-                           print "<del>Concluído</del>";
-                        }else if ($dados['status_atividade'] == '0') { 
-                                  print "<mark>A Fazer</mark>"; 
-                              } ?>
-              </div>
+                      
+                <div class="form-text text-justify">
+                    <strong>Data:</strong>
+                        <?php print $dados['data_atividade'];?><span> </span><strong>Horário:</strong> <?php print $dados['hora_evento']; ?>
+                </div>
+                <div class="form-text text-justify">
+                    <strong>Local:</strong> <?php print $dados['nome_local']; ?>
+                </div>
+                <div class="form-text text-center">
+                    <strong><?php print $dados['nome_atividade']; ?></strong>
+                </div> 
+                <div class="form-text text-center"> 
+                          <?php print $dados['ministro']; ?><span> </span> <i>(<?php print $dados['nome_congregacao']; ?>)</i>
+                </div>
+                <div class="form-text text-center">
+                    <strong>Tema:</strong> <?php print $dados['tema_atividade']; ?></strong>
+                </div>      
+                </div>
+                <div class="form-text text-center">
+                <strong> <?php if($dados['status_atividade'] == '1'){
+                                    print "<del>Concluído</del>";
+                               } 
+                               else if ($dados['status_atividade'] == '0') 
+                               { 
+                                         print "Em Andamento"; 
+                               }
+                         ?>
+                </div>           
+                 </strong>
             </div>
-         
          </div> 
           <!--<div class="col-md-6 col-lg-4">
             <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">

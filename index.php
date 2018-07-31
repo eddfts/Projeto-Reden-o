@@ -88,63 +88,14 @@
          <h3 class="text-center text-uppercase text-secondary mb-0"><?php print $titulo_evento = $dados['tema_evento']; ?></h3>
          <hr class="alert-dark mb-5">
          <!--Fim Titulo da Atividade-->
+       <?php
+             }
+           }
+       ?> <!--finaliza informaçoes do evento-->  
          <div class="row"> 
-         <!--texto informaçoes do evento-->
-         <div class="col-md-6 col-lg-4">
-             <div class="jumbotron">
-                <!--<div class="form-text text-justify">
-                    <strong>Data:</strong>
-                        <?php print $dados['Data'];?><span></span> <strong>Horário:</strong> <?php print $dados['hora_evento']; ?>
-                </div>
-                <div class="form-text text-justify">
-                    <strong>Local:</strong> <?php print $dados['nome_local']; ?>
-                </div>
-                <div class="form-text text-justify">
-                <strong> <?php if($dados['status_evento'] == '1'){
-                                    print "<del>Concluído</del>";
-                               } 
-                               else if ($dados['status_evento'] == '0') 
-                               { 
-                                         print "Em Andamento"; 
-                               }
-                         ?>
-                 </strong>
-                </div>             
-                 <!--Seleciona a atividade do ministrante do dia-->
-                 <?php              
-                        include_once 'models/atividadeMinistroSql.php';
-                        $sql = mysqli_query($con,$query_ministro) or die("Erro");
-                        $linhas = mysqli_num_rows($sql);
-                        if($linhas == '')
-                        {
-                           print "<div class='msg2 padding20'>Dados não encontrado.</div>";
-                       
-                        }
-                        else
-                            {
-                                while($dados=mysqli_fetch_assoc($sql))
-                                {
-                            
-                                ?><div class="form-text text-center">
-                                <strong><?php print $dados['nome_atividade']; ?> </strong>
-                                </div>
-                                <div class="form-text text-center">
-                                    <?php print $dados['ministro']; ?>
-                                        <i>(<?php print $dados['nome_congregacao']; ?>)</i>
-                                </div>
-                                <div class="form-text text-center">       
-                                        <strong>Tema:</strong><?php print $dados['tema_atividade']; ?>
-                             	</div>
-                                <?php
-                              }
-                            }
-                        ?>
-                </div><!--Jumbotron-->
-                </div> 
-             <?php
-                }
-            }
-        ?> <!--finaliza informaçoes do evento-->  
+         
+        
+           
         <?php
                 include_once 'models/atividadeSql.php'; 
                 $sql = mysqli_query($con,$query) or die("Erro");

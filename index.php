@@ -66,153 +66,106 @@
         <strong>Is.52:7</strong></h2>
       </div>
     </header>
-	<?php include_once 'models/eventoSql.php'; 
- 		
-		  $sql = mysqli_query($con,$query) or die("Erro");
-	      $linhas = mysqli_num_rows($sql);
-		  if($linhas == '')
-	      {
-			print "<div class='msg2 padding20'>Dados não encontrado.</div>";
-          }
-          else
-	         {
-				while($dados=mysqli_fetch_assoc($sql))
-			    {
-				  $id_evento = $dados['id_evento'];
-				
-		   ?>    
+	    
+      <!-- Título para o Evento -->
+      <?php include_once 'models/eventoSql.php'; 
+ 		        $sql = mysqli_query($con,$query) or die("Erro");
+	          $linhas = mysqli_num_rows($sql);
+		        if($linhas == '')
+	          {
+		          	print "<div class='text-dark'>Dados não encontrado.</div>";
+            }
+             else
+	          {
+				      while($dados=mysqli_fetch_assoc($sql))
+			      {
+              $id_evento = $dados['id_evento'];
+        ?>    
+    
     <!-- Portfolio Grid Section -->
      <section class="portfolio" id="portfolio">
       <div class="container">
          <!--Titulo da Atividade-->
          <h3 class="text-center text-uppercase text-secondary mb-0"><?php print $titulo_evento = $dados['tema_evento']; ?></h3>
          <hr class="alert-dark mb-5">
-         <!--Fim Titulo da Atividade-->
-       <?php
+         
+        <?php
              }
            }
-       ?> <!--finaliza informaçoes do evento-->  
-         <div class="row"> 
-         
+       ?> <!-- Fim Titulo da Atividade -->
         
-           
-        <?php
+         <!--inicializa os quadros de atividades-->
+         <div class="row"> 
+          
+          <?php
                 include_once 'models/atividadeSql.php'; 
                 $sql = mysqli_query($con,$query) or die("Erro");
                 $linhas = mysqli_num_rows($sql);
                 if($linhas == '')
                 {
-                    print "<div class='msg2 padding20'>Dados não encontrado.</div>";                        
+                    print "<div class='text-dark'>Dados não encontrado.</div>";                       
                 }
-                else{
-                     while($dados=mysqli_fetch_assoc($sql))
+                 else{
+                        while($dados=mysqli_fetch_assoc($sql))
                      {
-        ?>				 
-                            
-                <!--<a class="portfolio-item btn-primary mx-auto" href="#portfolio-modal-2">
-                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                       <i class="fa fa-search-plus fa-3x"></i>
-                     <!--<i class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss"></i>
-                    </div>
-                  </div>
-                    
-                    
-                 </a>      
-               <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-                  <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                    <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                      <i class="fa fa-search-plus fa-3x"></i>
-                    </div>
-                  </div>
-                  
-                  <img class="img-fluid" src="img/portfolio/prjRedencao.png" alt="">
-                </a>
-              </div>
-              
-              </div>-->
-              
-    
-             <div class="col-md-6 col-lg-4">
+           ?>				 
+           <!-- Quadros -->
+           <div class="col-md-6 col-lg-4">
               <div class="jumbotron">
                 <div class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
                   <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
                     <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
                       <i class="fa fa-search-plus fa-3x"></i>
                     </div>
-                  </div>
-                      
-                <div class="form-text text-justify">
-                    <strong>Data:</strong>
-                        <?php print $dados['data_atividade'];?><span> </span><strong>Horário:</strong> <?php print $dados['hora_evento']; ?>
-                </div>
-                <div class="form-text text-justify">
-                    <strong>Local:</strong> <?php print $dados['nome_local']; ?>
-                </div>
-                <div class="form-text text-center">
-                    <strong><?php print $dados['nome_atividade']; ?></strong>
-                </div> 
-                <div class="form-text text-center"> 
-                          <?php print $dados['ministro']; ?><span> </span> <i>(<?php print $dados['nome_congregacao']; ?>)</i>
-                </div>
-                <div class="form-text text-center">
-                    <strong>Tema:</strong> <?php print $dados['tema_atividade']; ?></strong>
-                </div>      
-                </div>
-                <div class="form-text text-center">
-                <strong> <?php if($dados['status_atividade'] == '1'){
-                                    print "<del>Concluído</del>";
-                               } 
-                               else if ($dados['status_atividade'] == '0') 
-                               { 
-                                         print "Em Andamento"; 
-                               }
-                         ?>
-                </div>           
-                 </strong>
-            </div>
-         </div> 
-          <!--<div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/game.png" alt="">
-            </a>
-          </div>-->
-          
-          <!--<div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/safe.png" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-6">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/submarine.png" alt="">
-            </a>
-          </div>
-        </div>
-      </div>-->
-  <?php }
-       }
-  ?>  
-  </div>
-    </section>
-     
- 
- </div>  
+                      </div>
+                          <!-- Data Atividade -->
+                          <div class="form-text text-justify">
+                            <strong>Data:</strong> <?php print $dados['data_atividade']; ?>
+                          </div>
+                          <!-- Horário Atividade-->
+                          <div>
+                            <strong>Horário:</strong> <?php print $dados['hora_evento']; ?>
+                          </div>
+                          <!-- Local -->
+                          <div class="form-text text-justify">
+                              <strong>Local:</strong> <?php print $dados['nome_local']; ?>
+                          </div>
+                          <!-- Nome da Atividade-->
+                          <div class="form-text text-center">
+                              <strong><?php print $dados['nome_atividade']; ?></strong>
+                          </div>
+                          <!--Nome Ministro e Congregação-->
+                          <div class="form-text text-center"> 
+                              <?php print $dados['ministro']; ?><span> </span> <i>(<?php print $dados['nome_congregacao']; ?>)</i>
+                          </div>
+                          <!-- Tema da Atividade -->
+                          <div class="form-text text-center">
+                              <strong>Tema:</strong> <?php print $dados['tema_atividade']; ?></strong>
+                          </div>      
+                          <!-- Status da Atividadde-->
+                          <div class="form-text text-center">
+                            <strong>
+                                       <?php 
+                                          if($dados['status_atividade'] == '1'){
+                                             print "<del>Concluído</del>";
+                                          } 
+                                            elseif ($dados['status_atividade'] == '0') 
+                                            { 
+                                              print "A realizar"; 
+                                            }
+                                      ?>
+                            </strong>
+                           </div>           
+                         </div>
+                      </div>
+                    </div> 
+            <?php 
+                 }
+               }
+             ?>  
+       </div><!-- Fechando o Container -->
+      </section>
+  </div>  
 
     <!-- About Section -->
     <section class="bg-primary text-white mb-0" id="about">
